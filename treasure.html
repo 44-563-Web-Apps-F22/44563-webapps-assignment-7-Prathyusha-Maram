@@ -21,10 +21,26 @@
                 color:darkred;
             }
             #score{
-                color:red;
+                color:darkmagenta;
             }
             #help{
-                color:tomato;
+                color:gold;
+            }
+                .pager li>a, .pager li>span {
+                display: inline-block;
+                padding: 5px 14px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+            }
+            .pager .next>a, .pager .next>span {
+                float: right;
+            }
+            .pager {
+            padding-left: 0;
+            margin: 20px 0;
+            text-align: center;
+            list-style: none;
             }
         </style>
     </head>
@@ -39,6 +55,9 @@
                 <div class="p-2 bg-primary flex-fill" id="score">Score is unknown.</div>
                 <div class="p-2 bg-danger flex-fill" id="help">Help report</div>
             </div>
+        </div>
+        <div class="container text-center">
+            <button class="btn btn-info" type="submit" onclick="resetGame()">Reset</button>
         </div>
 
         <!-- Part 3: The goal is to have a 5 by 5 display of images.-->
@@ -141,7 +160,7 @@
 <br>
 <!-- Part 4 Make the game operational  -->
 <script>
-    var ids = new Array(25);
+    var ids = new Array();
     var chestCount = 0;
     var score = 0;
     var lastCheck = 12;
@@ -193,6 +212,26 @@
             document.getElementById("help").innerHTML = "Sorry, no help available"
         }
     }
+    function resetGame(){
+        treasureLocation = Math.floor(Math.random() * ids.length)
+        chestCount = 0
+        score = 0
+        document.getElementById("chests").innerHTML = "Number of chests checked is " +chestCount
+        document.getElementById("score").innerHTML = "Score is " + score
+        document.getElementById("help").innerHTML = "Help report"
+        for (let i=0; i<ids.length; i++) {
+            document.getElementById(ids[i]).src = "treasureBox.jpg"
+        }
+
+    }
 </script>
+<div class="container">
+    <ul class="pager">
+        <li class="next">
+            <a href="reaction.html">Reaction Page</a>
+            <a href="cycler.html">Cycler Page</a>
+        </li>
+    </ul>
+</div>
 </body>
 </html>

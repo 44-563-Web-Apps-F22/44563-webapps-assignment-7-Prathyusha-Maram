@@ -2,6 +2,24 @@
 <html lang="en">
 <head>
   <title>!!!... REACTION ...!!!</title>
+  <style>
+    .pager li>a, .pager li>span {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    }
+    .pager .next>a, .pager .next>span {
+      float: right;
+    }
+    .pager {
+      padding-left: 0;
+      margin: 20px 0;
+      text-align: center;
+      list-style: none;
+    }
+  </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -35,10 +53,11 @@
     console.log(myTime)
   }
   function startTime(){
-    for(let i=0; i<4; i++){
+    let time = Math.floor(Math.random() * 10) + 2
+    for(let i=0; i<time; i++){
       setTimeout(()=>{
       document.getElementById('countDown').innerHTML = i
-    }, ((3-i)*1000));
+    }, ((time-i)*1000));
     setTimeout(()=> {
       if(myTime == undefined)
         document.getElementById('target').innerHTML = "Too Slow"
@@ -51,6 +70,13 @@
     }
   }
   </script>
-
+<div class="container">
+  <ul class="pager">
+      <li class="next">
+          <a href="treasure.html">Treasure Page</a>
+          <a href="cycler.html">Cycler Page</a>
+      </li>
+  </ul>
+</div>
 </body>
 </html>
